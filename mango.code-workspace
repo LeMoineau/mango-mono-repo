@@ -16,8 +16,8 @@
       "name": "Mango Web App"
     },
     {
-      "path": "services-common",
-      "name": "Services Common"
+      "path": "shared",
+      "name": "Shared Resources"
     },
     {
       "path": "resources"
@@ -29,7 +29,7 @@
       "mango-mobile-app": true,
       "mango-scraper-api": true,
       "mango-web-app": true,
-      "services-common": true,
+      "shared": true,
       "resources": true,
       "**/.next": true,
       "**/.git": true,
