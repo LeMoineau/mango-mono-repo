@@ -4,8 +4,6 @@ import { MangaId } from "./primitives/id";
 export interface ChapterPage {
   url: string;
   decryptionKey?: string;
-  width?: number;
-  height?: number;
 }
 
 export default interface ChapterViewer extends ChapterInfos {

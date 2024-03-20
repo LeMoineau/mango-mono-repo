@@ -4,8 +4,12 @@
       "path": "."
     },
     {
-      "path": "mango-scraper-api",
-      "name": "Mango Scraper API"
+      "path": "mango-scraping-api",
+      "name": "Mango Scraping API"
+    },
+    {
+      "path": "mango-bd-api",
+      "name": "Mango BD API"
     },
     {
       "path": "mango-mobile-app",
@@ -27,7 +31,8 @@
     "files.exclude": {
       "**/node_modules": true,
       "mango-mobile-app": true,
-      "mango-scraper-api": true,
+      "mango-scraping-api": true,
+      "mango-bd-api": true,
       "mango-web-app": true,
       "shared": true,
       "resources": true,
