@@ -6,7 +6,7 @@ import {
     ChapterEndpoint,
     MangaEndpoint,
     SourceName,
-} from '@shared/types/primitives/id'
+} from '@shared/types/primitives/Identifiers'
 
 const useChapterViewer = () => {
     const [pagesLoaded, setPagesLoaded] = useState<string[]>([])

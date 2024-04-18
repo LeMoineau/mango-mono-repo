@@ -4,7 +4,7 @@ import useChapterViewer from '@/common/hooks/use-chapter-viewer'
 import useApi from '@shared/hooks/use-api'
 import ChapterViewer from '@shared/types/chapterViewer'
 import config from '@/common/config/config'
-import { SourceName } from '@shared/types/primitives/id'
+import { SourceName } from '@shared/types/primitives/Identifiers'
 import useChapterReaderEvents from '@/common/hooks/use-chapter-reader-events'
 
 export default function ViewerPage() {
