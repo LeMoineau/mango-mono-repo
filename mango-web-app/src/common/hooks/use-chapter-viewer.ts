@@ -2,20 +2,24 @@ import ChapterViewer from '@shared/types/chapterViewer'
 import axios from 'axios'
 import { useRef, useState } from 'react'
 import config from '../config/config'
-import { ChapterId, MangaId, SourceName } from '@shared/types/primitives/id'
+import {
+    ChapterEndpoint,
+    MangaEndpoint,
+    SourceName,
+} from '@shared/types/primitives/id'
 
 const useChapterViewer = () => {
     const [pagesLoaded, setPagesLoaded] = useState<string[]>([])
     const src = useRef<SourceName>()
-    const mangaId = useRef<MangaId>()
-    const chapterId = useRef<ChapterId>()
+    const mangaId = useRef<MangaEndpoint>()
+    const chapterId = useRef<ChapterEndpoint>()
     const chapterViewer = useRef<ChapterViewer>()
     const pages = useRef<{ [key: number]: string }>({})
 
     const selectChapterViewer = (
         s: SourceName,
-        mi: MangaId,
-        ci: ChapterId,
+        mi: MangaEndpoint,
+        ci: ChapterEndpoint,
         cv: ChapterViewer
     ) => {
         src.current = s

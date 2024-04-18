@@ -1,9 +1,10 @@
 import { IntersiteField } from "./IntersiteField";
 import { IntersiteChapterInfos } from "./IntersiteChapter";
-import { FormattedName, MangaId } from "../primitives/id";
+import { FormattedName, MangaEndpoint, UUID } from "../primitives/id";
 
 export interface IntersiteMangaInfos {
-  id: IntersiteField<MangaId>;
+  id: IntersiteField<UUID>;
+  mangaEndpoint: IntersiteField<MangaEndpoint>;
   name: IntersiteField<string>;
   formattedName: FormattedName;
   author: IntersiteField<string>;

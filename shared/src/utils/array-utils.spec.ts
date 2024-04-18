@@ -5,6 +5,14 @@ import SplittingError from "../errors/SplittingError";
 describe("array-utils", () => {
   let AN_ARRAY: any[] = [];
   const THE_LAST_ITEM = 4;
+  const AN_INVENTORY_ARRAY = [
+    { name: "asparagus", type: "vegetables", quantity: 9 },
+    { name: "bananas", type: "fruit", quantity: 5 },
+    { name: "goat", type: "meat", quantity: 23 },
+    { name: "cherries", type: "fruit", quantity: 12 },
+    { name: "fish", type: "meat", quantity: 22 },
+    { name: "fish", type: "meat", quantity: 50 },
+  ];
 
   beforeEach(() => {
     AN_ARRAY = [1, 2, 3];
@@ -70,5 +78,44 @@ describe("array-utils", () => {
     expect(ArrayUtils.transformEachItemOf(AN_ARRAY, A_TRANSFORMATER)).toEqual(
       []
     );
+  });
+
+  describe("groupBy", () => {
+    it("should group by simple attribute key in object array", () => {
+      expect(
+        ArrayUtils.groupBy(AN_INVENTORY_ARRAY, (item) => item.type)
+      ).toStrictEqual({
+        vegetables: [{ name: "asparagus", type: "vegetables", quantity: 9 }],
+        fruit: [
+          { name: "bananas", type: "fruit", quantity: 5 },
+          { name: "cherries", type: "fruit", quantity: 12 },
+        ],
+        meat: [
+          { name: "goat", type: "meat", quantity: 23 },
+          { name: "fish", type: "meat", quantity: 22 },
+          { name: "fish", type: "meat", quantity: 50 },
+        ],
+      });
+    });
+
+    it("should group by composite attribute key in object array", () => {
+      expect(
+        ArrayUtils.groupBy(
+          AN_INVENTORY_ARRAY,
+          (item) => `${item.type}-${item.name}`
+        )
+      ).toStrictEqual({
+        "vegetables-asparagus": [
+          { name: "asparagus", type: "vegetables", quantity: 9 },
+        ],
+        "fruit-bananas": [{ name: "bananas", type: "fruit", quantity: 5 }],
+        "meat-goat": [{ name: "goat", type: "meat", quantity: 23 }],
+        "fruit-cherries": [{ name: "cherries", type: "fruit", quantity: 12 }],
+        "meat-fish": [
+          { name: "fish", type: "meat", quantity: 22 },
+          { name: "fish", type: "meat", quantity: 50 },
+        ],
+      });
+    });
   });
 });

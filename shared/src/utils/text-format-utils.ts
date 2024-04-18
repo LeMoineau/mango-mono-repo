@@ -1,5 +1,8 @@
 export namespace TextFormatUtils {
-  export function formatChapterNumber(chapterNumber: string): string {
+  export function formatChapterName(
+    chapterNumber: string,
+    chapterMangaTitle: string
+  ): string {
     let res = chapterNumber.trim().replace(/[^0-9\-]+/g, "");
     try {
       const numberRes = Number(res); // to remove left 0 as "045"
@@ -7,7 +10,7 @@ export namespace TextFormatUtils {
         res = `${numberRes}`;
       }
     } catch {}
-    return res;
+    return `${formatMangaTitle(chapterMangaTitle)}-${res}`;
   }
 
   export function formatMangaTitle(title: string): string {

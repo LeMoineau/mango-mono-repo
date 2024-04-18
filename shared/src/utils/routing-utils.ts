@@ -58,6 +58,9 @@ export namespace RoutingUtils {
     if (!queryParam) {
       return;
     }
+    if (typeof queryParam === "boolean") {
+      return queryParam;
+    }
     if (typeof queryParam === "string") {
       return queryParam.toLowerCase() === "true";
     }
@@ -74,7 +77,8 @@ export namespace RoutingUtils {
     queryParam: any
   ): number | undefined {
     try {
-      return Number(queryParam);
+      const res = Number(queryParam);
+      return isNaN(res) ? undefined : res;
     } catch (err) {
       throw new RoutingError(`"${queryParam}" is not a number`);
     }
