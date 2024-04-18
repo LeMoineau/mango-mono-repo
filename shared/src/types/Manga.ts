@@ -1,5 +1,9 @@
 import { Identified } from "./attributes/Identified";
 import { Chapter, SourcelessChapter } from "./Chapter";
+import {
+  IdentifiedIntersiteMangaCore,
+  IntersiteMangaCore,
+} from "./IntersiteManga";
 import { isSourceName, SourceName } from "./primitives/Identifiers";
 
 export interface MangaCore {
@@ -20,7 +24,12 @@ export interface ScrapedManga extends MangaCore {
 }
 
 export interface IdentifiedMangaCore extends MangaCore, Identified {}
-export interface StoredManga extends Manga, Identified {}
+
+export interface ParentlessStoredManga extends Manga, Identified {}
+
+export interface StoredManga extends ParentlessStoredManga {
+  intersiteManga: IdentifiedIntersiteMangaCore;
+}
 
 /**
  * TYPES FUNCTION

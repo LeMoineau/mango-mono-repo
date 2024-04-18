@@ -5,9 +5,8 @@ export namespace TextFormatUtils {
   ): string {
     let res = chapterNumber.trim().replace(/[^0-9\-]+/g, "");
     try {
-      const numberRes = Number(res); // to remove left 0 as "045"
-      if (!Number.isNaN(numberRes)) {
-        res = `${numberRes}`;
+      if (isNumber(res)) {
+        res = `${Number(res)}`;
       }
     } catch {}
     return `${formatMangaTitle(chapterMangaTitle)}-${res}`;
