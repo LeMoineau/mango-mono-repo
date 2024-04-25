@@ -1,15 +1,13 @@
 import { Identified } from "./attributes/Identified";
-import { Chapter, SourcelessChapter } from "./Chapter";
-import {
-  IdentifiedIntersiteMangaCore,
-  IntersiteMangaCore,
-} from "./IntersiteManga";
+import { SourcelessChapter } from "./Chapter";
+import { IdentifiedIntersiteMangaCore } from "./IntersiteManga";
 import { isSourceName, SourceName } from "./primitives/Identifiers";
 
 export interface MangaCore {
   endpoint: string;
   src: SourceName;
   title: string;
+  url: string;
 }
 
 export interface Manga extends MangaCore {
@@ -36,5 +34,11 @@ export interface StoredManga extends ParentlessStoredManga {
  */
 
 export function isManga(manga: any): manga is Manga {
-  return manga.endpoint && isSourceName(manga.src) && manga.title;
+  return (
+    manga &&
+    manga.endpoint &&
+    isSourceName(manga.src) &&
+    manga.title &&
+    manga.url
+  );
 }

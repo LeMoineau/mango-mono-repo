@@ -1,4 +1,4 @@
-import { SourceName } from "./primitives/Identifiers";
+import { isSourceName, SourceName } from "./primitives/Identifiers";
 import { MangaNested, IdentifiedMangaNested } from "./attributes/MangaNested";
 import { Identified } from "./attributes/Identified";
 import { ChapterPage } from "./ChapterPage";
@@ -8,6 +8,7 @@ export interface ChapterCore {
   number: string;
   src: SourceName;
   endpoint: string;
+  url: string;
   image?: string;
   releaseDate?: string | Date;
 }
@@ -40,10 +41,13 @@ export interface MangaNestedIdentifiedChapter extends Chapter, Identified {
 
 export function isScrapedChapter(chapter: any): chapter is ScrapedChapter {
   return (
+    chapter &&
     chapter.manga &&
     chapter.title &&
     chapter.src &&
+    isSourceName(chapter.src) &&
     chapter.endpoint &&
+    chapter.url &&
     chapter.number
   );
 }

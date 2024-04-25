@@ -17,3 +17,11 @@ export function isUUID(str: any): str is UUID {
 export function isSourceName(str: any): str is SourceName {
   return str === "mangaplus" || str === "mangasaki";
 }
+
+export function isMangaFormattedName(str: any): str is MangaFormattedName {
+  return typeof str === "string";
+}
+
+export function isChapterFormattedName(str: any): str is ChapterFormattedName {
+  return typeof str === "string";
+}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useApi = <DATA>(baseURL: string) => {
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<DATA>();
+  const [data, setData] = useState();
   const axiosInstance = axios.create({
     baseURL,
   });
@@ -22,16 +22,19 @@ const useApi = <DATA>(baseURL: string) => {
     setData(undefined);
   };
 
-  const fetch = async (
+  const fetch = async <T extends DATA>(
     endpoint: string,
-    forceRefresh?: boolean
-  ): Promise<DATA | undefined> => {
-    if (loaded && !forceRefresh) {
+    options?: {
+      forceRefresh?: boolean;
+      config?: axios.AxiosRequestConfig;
+    }
+  ): Promise<T | undefined> => {
+    if (loaded && !options?.forceRefresh) {
       return data;
     }
     setLoading(true);
     return await axiosInstance
-      .get(endpoint)
+      .get(endpoint, options?.config)
       .then((res) => {
         setData(res.data);
         return res.data;

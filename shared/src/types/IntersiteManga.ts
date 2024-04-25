@@ -1,6 +1,9 @@
 import { Identified } from "./attributes/Identified";
-import { ParentlessStoredManga, StoredManga } from "./Manga";
-import { MangaFormattedName } from "./primitives/Identifiers";
+import { ParentlessStoredManga } from "./Manga";
+import {
+  isMangaFormattedName,
+  MangaFormattedName,
+} from "./primitives/Identifiers";
 
 export interface IntersiteMangaCore {
   formattedName: MangaFormattedName;
@@ -12,4 +15,17 @@ export interface IdentifiedIntersiteMangaCore
 
 export interface IntersiteManga extends IdentifiedIntersiteMangaCore {
   mangas: ParentlessStoredManga[];
+}
+
+/**
+ * TYPES FUNCTION
+ */
+
+export function isIntersiteManga(
+  intersiteManga: any
+): intersiteManga is IntersiteManga {
+  return (
+    Array.isArray(intersiteManga.mangas) &&
+    isMangaFormattedName(intersiteManga.formattedName)
+  );
 }
