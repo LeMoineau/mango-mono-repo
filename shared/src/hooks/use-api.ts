@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
+import { JsonObject } from "../types/primitives/jsonObject";
 
 const useApi = <DATA>(baseURL: string) => {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +27,7 @@ const useApi = <DATA>(baseURL: string) => {
     endpoint: string,
     options?: {
       forceRefresh?: boolean;
-      config?: axios.AxiosRequestConfig;
+      config?: AxiosRequestConfig;
     }
   ): Promise<T | undefined> => {
     if (loaded && !options?.forceRefresh) {
@@ -37,6 +38,29 @@ const useApi = <DATA>(baseURL: string) => {
       .get(endpoint, options?.config)
       .then((res) => {
         setData(res.data);
+        setLoading(false);
+        return res.data;
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        return;
+      });
+  };
+
+  const post = async <T extends DATA>(
+    endpoint: string,
+    data: JsonObject,
+    options?: {
+      config?: AxiosRequestConfig;
+    }
+  ): Promise<T | undefined> => {
+    setLoading(true);
+    return await axiosInstance
+      .post(endpoint, data, options?.config)
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
         return res.data;
       })
       .catch((err) => {
@@ -53,9 +77,9 @@ const useApi = <DATA>(baseURL: string) => {
   return {
     loaded,
     loading,
-    data,
     refresh,
     fetch,
+    post,
     get,
   };
 };

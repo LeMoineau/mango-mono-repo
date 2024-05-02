@@ -91,4 +91,15 @@ export namespace ArrayUtils {
     }
     return res;
   }
+
+  export function removeFrom<T>(
+    arr: T[],
+    condition: (item: T) => boolean
+  ): T[] {
+    const index = arr.findIndex((item) => condition(item));
+    if (index !== -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
 }

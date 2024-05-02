@@ -1,4 +1,4 @@
-import Manga from "../../types/manga";
+import Manga from "../../types/basics/Manga";
 import {
   MANGAPLUS_CHAPTER_140_DANDADAN,
   MANGAPLUS_CHAPTER_141_DANDADAN,

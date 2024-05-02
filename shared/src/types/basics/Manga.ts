@@ -1,7 +1,7 @@
-import { Identified } from "./attributes/Identified";
+import { Identified } from "../attributes/Identified";
 import { SourcelessChapter } from "./Chapter";
 import { IdentifiedIntersiteMangaCore } from "./IntersiteManga";
-import { isSourceName, SourceName } from "./primitives/Identifiers";
+import { isSourceName, SourceName } from "../primitives/Identifiers";
 
 export interface MangaCore {
   endpoint: string;

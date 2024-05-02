@@ -1,9 +1,9 @@
-import { Identified } from "./attributes/Identified";
+import { Identified } from "../attributes/Identified";
 import { ParentlessStoredManga } from "./Manga";
 import {
   isMangaFormattedName,
   MangaFormattedName,
-} from "./primitives/Identifiers";
+} from "../primitives/Identifiers";
 
 export interface IntersiteMangaCore {
   formattedName: MangaFormattedName;

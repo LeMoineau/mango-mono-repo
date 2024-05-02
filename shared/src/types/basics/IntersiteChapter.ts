@@ -1,13 +1,13 @@
-import { Identified } from "./attributes/Identified";
+import { Identified } from "../attributes/Identified";
 import {
   IdentifiedIntersiteMangaNested,
   isIdentifiedIntersiteMangaNested,
-} from "./attributes/MangaNested";
+} from "../attributes/MangaNested";
 import { IdentifiedChapter } from "./Chapter";
 import {
   ChapterFormattedName,
   isChapterFormattedName,
-} from "./primitives/Identifiers";
+} from "../primitives/Identifiers";
 
 export interface IntersiteChapterCore {
   formattedName: ChapterFormattedName;

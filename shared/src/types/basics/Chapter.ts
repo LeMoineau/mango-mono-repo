@@ -1,6 +1,6 @@
-import { isSourceName, SourceName } from "./primitives/Identifiers";
-import { MangaNested, IdentifiedMangaNested } from "./attributes/MangaNested";
-import { Identified } from "./attributes/Identified";
+import { isSourceName, SourceName } from "../primitives/Identifiers";
+import { MangaNested, IdentifiedMangaNested } from "../attributes/MangaNested";
+import { Identified } from "../attributes/Identified";
 import { ChapterPage } from "./ChapterPage";
 
 export interface ChapterCore {
