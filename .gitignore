@@ -129,3 +129,5 @@ out
 
 .git
 resources/
+*_old/
+mango-mobile-app2/

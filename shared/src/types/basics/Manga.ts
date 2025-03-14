@@ -8,6 +8,7 @@ export interface MangaCore {
   src: SourceName;
   title: string;
   url: string;
+  lang: string;
 }
 
 export interface Manga extends MangaCore {
@@ -18,7 +19,7 @@ export interface Manga extends MangaCore {
 export interface ScrapedManga extends MangaCore {
   author: string;
   image: string;
-  chapters: SourcelessChapter[];
+  chapters?: SourcelessChapter[];
 }
 
 export interface IdentifiedMangaCore extends MangaCore, Identified {}
@@ -39,6 +40,7 @@ export function isManga(manga: any): manga is Manga {
     manga.endpoint &&
     isSourceName(manga.src) &&
     manga.title &&
-    manga.url
+    manga.url &&
+    manga.lang
   );
 }
